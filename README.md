@@ -1,3 +1,7 @@
+<h1 align="center">shopping-with-ai</h1>
+
+An e-commerce project built on [Bagisto](https://github.com/bagisto/bagisto).
+
 <p align="center">
   <a href="http://www.bagisto.com">
     <picture>
