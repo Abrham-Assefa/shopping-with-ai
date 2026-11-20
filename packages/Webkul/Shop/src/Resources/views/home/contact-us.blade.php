@@ -16,6 +16,12 @@
                 @lang('shop::app.home.contact.about')
             </p>
 
+            @if ($contactPage?->html_content)
+                <div class="mt-8 rounded-lg bg-zinc-50 p-6 text-zinc-700 max-sm:p-4">
+                    {!! $contactPage->html_content !!}
+                </div>
+            @endif
+
             <div
                 id="contact-us-form"
                 class="mt-14 rounded-sm max-sm:mt-8"

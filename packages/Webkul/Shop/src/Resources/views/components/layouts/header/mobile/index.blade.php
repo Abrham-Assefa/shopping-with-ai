@@ -24,14 +24,14 @@
             <a
                 href="{{ route('shop.home.index') }}"
                 class="flex max-h-7.5 items-center"
-                aria-label="@lang('shop::app.components.layouts.header.mobile.bagisto')"
+                aria-label="{{ config('app.name') }}"
             >
                 <img
                     class="block"
-                    src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.svg') }}"
+                    src="{{ core()->getCurrentChannel()->logo_url ?? asset('images/ab-shop-logo.svg') }}"
                     alt="{{ core()->getCurrentChannel()->logo_alt ?: config('app.name') }}"
                     width="131"
-                    height="29"
+                    height="36"
                 >
             </a>
 
@@ -240,9 +240,6 @@
                 required
             >
 
-            @if (core()->getConfigData('catalog.products.settings.image_search'))
-                @include('shop::search.images.index')
-            @endif
         </div>
     </form>
 
@@ -268,7 +265,7 @@
                     <div class="flex items-center justify-between">
                         <a href="{{ route('shop.home.index') }}">
                             <img
-                                src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.svg') }}"
+                                src="{{ core()->getCurrentChannel()->logo_url ?? asset('images/ab-shop-logo.svg') }}"
                                 alt="{{ core()->getCurrentChannel()->logo_alt ?: config('app.name') }}"
                                 width="131"
                                 height="29"

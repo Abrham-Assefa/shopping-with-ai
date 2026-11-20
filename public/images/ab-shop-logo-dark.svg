@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="100" viewBox="0 0 360 100" fill="none">
+  <rect x="8" y="10" width="80" height="80" rx="20" fill="#16833F"/>
+  <path d="M48 27L68 76H57L53 65H43L39 76H28L48 27ZM48 44L45 56H51L48 44Z" fill="#FFFFFF"/>
+  <path d="M20 34H96" stroke="#E9B949" stroke-width="5" stroke-linecap="round"/>
+  <text x="108" y="58" fill="#FFFFFF" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="700">NOVA</text>
+  <text x="109" y="78" fill="#E9B949" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="800" letter-spacing="5">MARKET</text>
+  <path d="M108 88H322" stroke="#16833F" stroke-width="3" stroke-linecap="round"/>
+</svg>

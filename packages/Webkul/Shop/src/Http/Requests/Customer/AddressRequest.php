@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use Webkul\Core\Rules\PhoneNumber;
 use Webkul\Core\Rules\PostCode;
 use Webkul\Core\Rules\StateBelongsToCountry;
-use Webkul\Customer\Rules\VatIdRule;
 
 class AddressRequest extends FormRequest
 {
@@ -18,6 +17,19 @@ class AddressRequest extends FormRequest
     public function authorize()
     {
         return true;
+    }
+
+    /**
+     * Apply hidden defaults used for Ethiopian individual checkout addresses.
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'company_name' => 'Individual',
+            'vat_id' => 'number',
+            'postcode' => '1000',
+            'state' => 'Addis Ababa',
+        ]);
     }
 
     /**
@@ -40,7 +52,7 @@ class AddressRequest extends FormRequest
             'city' => ['required', 'string'],
             'postcode' => core()->isPostCodeRequired() ? ['required', new PostCode] : [new PostCode],
             'phone' => ['required', new PhoneNumber],
-            'vat_id' => [(new VatIdRule)->setCountry($this->input('country'))],
+            'vat_id' => ['nullable'],
             'email' => ['required'],
         ];
     }

@@ -29,6 +29,64 @@
 @endpush
 
 <x-shop::layouts>
+    <section class="ethiopia-hero">
+        <div class="ethiopia-hero-copy">    
+           
+            <h1>Fresh from Ethiopia,<br><span>delivered to you.</span></h1>
+            <p class="ethiopia-description">
+                Discover Ethiopian coffee, injera, pantry staples, fresh produce, and everyday essentials, delivered across Addis Ababa.
+            </p>
+
+            <div class="ethiopia-actions">
+                <a href="{{ route('shop.search.index') }}" class="ethiopia-primary">Shop groceries</a>
+                <a href="{{ route('shop.search.index', ['query' => 'coffee']) }}" class="ethiopia-secondary">Shop Ethiopian coffee</a>
+            </div>
+
+            <div class="ethiopia-delivery">
+                <span class="ethiopia-delivery-dot" aria-hidden="true"></span>
+                <strong>Same-day delivery</strong>
+                <small>In selected Addis Ababa areas</small>
+            </div>
+        </div>
+
+        <div class="ethiopia-hero-image" aria-label="Fresh Ethiopian market produce">
+            <img
+                src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=85"
+                alt="Fresh fruit and vegetables at a market"
+            />
+            <div class="ethiopia-coffee-note">
+                <span>Fresh arrival</span>
+                <strong>Ethiopian Coffee</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="ethiopia-categories" aria-label="Popular shopping categories">
+        <a href="{{ route('shop.search.index', ['query' => 'coffee']) }}">
+            <span>01</span>
+            <strong>Traditional coffee</strong>
+            <small>Sidamo, Jimma & Yirgacheffe</small>
+        </a>
+
+        <a href="{{ route('shop.search.index', ['query' => 'fresh']) }}">
+            <span>02</span>
+            <strong>Fresh produce</strong>
+            <small>Fruit and vegetables</small>
+        </a>
+
+        <a href="{{ route('shop.search.index', ['query' => 'pantry']) }}">
+            <span>03</span>
+            <strong>Pantry essentials</strong>
+            <small>Teff, grains & spices</small>
+        </a>
+
+        <a href="{{ route('shop.search.index', ['query' => 'household']) }}">
+            <span>04</span>
+            <strong>Household</strong>
+            <small>Care and everyday needs</small>
+        </a>
+    </section>
+
     <!-- Page Title -->
     <x-slot:title>
         {{  $channel->home_seo['meta_title'] ?? '' }}

@@ -3,6 +3,7 @@
 namespace Webkul\ImageCache\Http\Controllers;
 
 use Exception;
+use Illuminate\Image\Drivers\GdDriver;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -65,6 +66,14 @@ class ImageCacheController extends Controller
 
         if (is_null($contents)) {
             abort(404, 'Image not found.');
+        }
+
+        if (
+            image_manager()->driver() instanceof GdDriver
+            && ! function_exists('imagewebp')
+            && (new \finfo(FILEINFO_MIME_TYPE))->buffer($contents) === 'image/webp'
+        ) {
+            return $this->buildResponse($contents);
         }
 
         try {

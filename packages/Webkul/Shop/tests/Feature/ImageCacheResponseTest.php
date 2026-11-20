@@ -27,6 +27,17 @@ it('should serve a stored image as its own image type, which the browser may nei
         ->assertHeader('Content-Security-Policy', "default-src 'none'; style-src 'unsafe-inline'; sandbox");
 })->with(['original', 'download', 'small']);
 
+it('should serve WebP originals when GD cannot encode WebP', function () {
+    $webp = base64_decode('UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEAAUAmJaQAA3AA/v89WAAAAA==');
+
+    File::put(storage_path('app/public/imagecache-responses/source.webp'), $webp);
+
+    get('cache/medium/imagecache-responses/source.webp')
+        ->assertOk()
+        ->assertHeader('Content-Type', 'image/webp')
+        ->assertContent($webp);
+});
+
 // ============================================================================
 // Refusing Other Files
 // ============================================================================

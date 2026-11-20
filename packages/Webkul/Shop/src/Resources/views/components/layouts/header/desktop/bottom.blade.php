@@ -11,12 +11,12 @@
 
         <a
             href="{{ route('shop.home.index') }}"
-            aria-label="@lang('shop::app.components.layouts.header.desktop.bottom.bagisto')"
+            aria-label="{{ config('app.name') }}"
         >
             <img
-                src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.svg') }}"
-                width="131"
-                height="29"
+                src="{{ core()->getCurrentChannel()->logo_url ?? asset('images/ab-shop-logo.svg') }}"
+                width="144"
+                height="40"
                 alt="{{ core()->getCurrentChannel()->logo_alt ?: config('app.name') }}"
             >
         </a>
@@ -102,9 +102,6 @@
                 >
                 </button>
 
-                @if (core()->getConfigData('catalog.products.settings.image_search'))
-                    @include('shop::search.images.index')
-                @endif
             </form>
         </div>
 

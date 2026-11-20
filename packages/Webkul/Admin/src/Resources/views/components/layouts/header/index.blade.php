@@ -1,5 +1,7 @@
 @php
     $admin = auth()->guard('admin')->user();
+
+    $logo = core()->getConfigData('general.design.admin_logo.logo_image');
 @endphp
 
 <header class="sticky top-0 z-10001 flex items-center justify-between border-b bg-white px-2 py-2 dark:border-gray-800 dark:bg-gray-900 sm:px-4 sm:py-2.5">
@@ -13,7 +15,7 @@
 
         <!-- Logo -->
         <a href="{{ route('admin.dashboard.index') }}" class="shrink-0">
-            @if ($logo = core()->getConfigData('general.design.admin_logo.logo_image'))
+            @if ($logo)
                 <img
                     class="h-8 w-auto sm:h-10"
                     src="{{ Storage::url($logo) }}"
@@ -21,7 +23,7 @@
                 />
             @else
                 <img
-                    src="{{ request()->cookie('dark_mode') ? bagisto_asset('images/dark-logo.svg') : bagisto_asset('images/logo.svg') }}"
+                    src="{{ request()->cookie('dark_mode') ? asset('images/ab-shop-logo-dark.svg') : asset('images/ab-shop-logo.svg') }}"
                     class="h-8 w-auto sm:h-10"
                     id="logo-image"
                     alt="{{ config('app.name') }}"
@@ -104,10 +106,11 @@
             <x-slot:content class="p-0!">
                 <div class="flex items-center gap-1.5 border border-b-gray-300 px-4 py-2 dark:border-gray-800 sm:px-5 sm:py-2.5">
                     <img
-                        src="{{ url('cache/logo/bagisto.png') }}"
+                        src="{{ $logo ? Storage::url($logo) : asset('images/ab-shop-icon.svg') }}"
                         class="sm:h-6 sm:w-6"
                         width="20"
                         height="20"
+                        alt="{{ config('app.name') }}"
                     />
 
                     <!-- Version -->
@@ -162,7 +165,7 @@
                 />
             @else
                 <img
-                    src="{{ request()->cookie('dark_mode') ? bagisto_asset('images/dark-logo.svg') : bagisto_asset('images/logo.svg') }}"
+                    src="{{ request()->cookie('dark_mode') ? asset('images/ab-shop-logo-dark.svg') : asset('images/ab-shop-logo.svg') }}"
                     class="h-8 w-auto sm:h-10"
                     id="logo-image"
                     alt="{{ config('app.name') }}"
@@ -864,9 +867,9 @@
                 return {
                     isDarkMode: {{ request()->cookie('dark_mode') ?? 0 }},
 
-                    logo: "{{ bagisto_asset('images/logo.svg') }}",
+                    logo: "{{ asset('images/ab-shop-logo.svg') }}",
 
-                    dark_logo: "{{ bagisto_asset('images/dark-logo.svg') }}",
+                    dark_logo: "{{ asset('images/ab-shop-logo-dark.svg') }}",
                 };
             },
 

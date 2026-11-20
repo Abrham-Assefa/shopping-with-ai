@@ -67,7 +67,7 @@
     <link
         rel="preload"
         as="image"
-        href="{{ url('cache/logo/bagisto.png') }}"
+        href="{{ ($logo = core()->getConfigData('general.design.admin_logo.logo_image')) ? Storage::url($logo) : asset('images/ab-shop-logo.svg') }}"
     >
 
     @if ($favicon = core()->getConfigData('general.design.admin_logo.favicon'))

@@ -24,11 +24,17 @@
     /**
      * Colours — the palette of named colours used in the storefront.
      */
-    --color-navyBlue:    #060C3B;
-    --color-lightOrange: #F6F2EB;
+    --color-navyBlue:    #10213A;
+    --color-lightOrange: #FFF3E8;
     --color-darkGreen:   #40994A;
-    --color-darkBlue:    #0044F2;
+    --color-darkBlue:    #0057FF;
     --color-darkPink:    #F85156;
+    --color-velocityOrange: #FF7A00;
+    --color-blue-50:  #EFF6FF;
+    --color-blue-100: #DBEAFE;
+    --color-blue-500: #1769FF;
+    --color-blue-600: #0057FF;
+    --color-blue-700: #0046D5;
 
     /**
      * Fonts — the named families the storefront can ask for by utility.
@@ -176,7 +182,7 @@
     }
 
     ::selection {
-        background-color: rgba(6, 12, 59, .2);
+        background-color: rgba(0, 87, 255, .2);
     }
 }
 
@@ -305,11 +311,11 @@
     }
 
     .primary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:opacity-[0.9];
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-darkBlue border border-darkBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-velocityOrange hover:border-velocityOrange;
     }
 
     .secondary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-[#050e3a0d];
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-darkBlue border border-darkBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-blue-50;
     }
 
     .shimmer {
@@ -356,7 +362,7 @@
     .glow-404 {
         background-clip: text;
         -webkit-background-clip: text;
-        color: #060C3B;
+        color: #10213A;
     }
 
     .glow-shadow-404 {
@@ -384,5 +390,600 @@
 
     .skip-to-main-content-link:focus {
         @apply ltr:left-1/2 rtl:right-1/2 ltr:translate-x-1/2 rtl:translate-x-[-50%] opacity-100;
+    }
+}
+
+.nova-market-hero {
+    position: relative;
+    min-height: 520px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    align-items: center;
+    gap: 48px;
+    padding: 72px max(24px, 7vw);
+    background:
+        radial-gradient(circle at 78% 45%, rgba(52, 211, 153, .28), transparent 18%),
+        linear-gradient(135deg, #07111f 0%, #0b1d32 58%, #10293b 100%);
+    color: #fff;
+}
+
+.nova-market-hero-grid {
+    position: absolute;
+    inset: 0;
+    opacity: .16;
+    background-image:
+        linear-gradient(rgba(147, 197, 253, .24) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(147, 197, 253, .24) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: linear-gradient(90deg, transparent, #000 60%, #000);
+}
+
+.nova-market-hero-content,
+.nova-market-visual {
+    position: relative;
+    z-index: 1;
+}
+
+.nova-market-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 22px;
+    color: #bae6fd;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.nova-market-status span {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #4ade80;
+    box-shadow: 0 0 18px #4ade80;
+}
+
+.nova-market-kicker {
+    margin: 0 0 8px;
+    color: #67e8f9;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.nova-market-hero h1 {
+    margin: 0;
+    max-width: 720px;
+    font-size: clamp(48px, 6vw, 84px);
+    line-height: .94;
+    font-weight: 800;
+    letter-spacing: -.055em;
+}
+
+.nova-market-hero h1 span {
+    color: #67e8f9;
+}
+
+.nova-market-description {
+    max-width: 590px;
+    margin: 24px 0 30px;
+    color: #dbeafe;
+    font-size: 17px;
+    line-height: 1.75;
+}
+
+.nova-market-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.nova-market-primary,
+.nova-market-secondary {
+    min-height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 0 22px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.nova-market-primary {
+    background: #67e8f9;
+    color: #07111f;
+}
+
+.nova-market-secondary {
+    border: 1px solid rgba(186, 230, 253, .42);
+    color: #fff;
+}
+
+.nova-market-primary:hover,
+.nova-market-secondary:hover {
+    transform: translateY(-2px);
+}
+
+.nova-market-secondary:hover {
+    border-color: #67e8f9;
+    background: rgba(103, 232, 249, .08);
+}
+
+.nova-market-visual {
+    min-height: 390px;
+    display: grid;
+    place-items: center;
+}
+
+.nova-market-product {
+    position: relative;
+    width: min(330px, 75%);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    border: 1px solid rgba(103, 232, 249, .55);
+    border-radius: 50%;
+    background: linear-gradient(145deg, rgba(15, 118, 110, .58), rgba(8, 47, 73, .88));
+    box-shadow: inset 0 0 70px rgba(103, 232, 249, .12), 0 0 80px rgba(34, 211, 238, .12);
+    text-align: center;
+}
+
+.nova-market-product-badge {
+    position: absolute;
+    top: 38px;
+    right: 24px;
+    border: 1px solid rgba(74, 222, 128, .5);
+    border-radius: 999px;
+    padding: 7px 11px;
+    color: #86efac;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.nova-market-product-icon {
+    width: 112px;
+    height: 112px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(103, 232, 249, .5);
+    border-radius: 28px;
+    background: rgba(6, 182, 212, .12);
+    color: #67e8f9;
+    font-size: 56px;
+    font-weight: 800;
+    transform: rotate(-8deg);
+}
+
+.nova-market-product p {
+    margin: 22px 0 4px;
+    color: #bae6fd;
+    font-size: 13px;
+}
+
+.nova-market-product strong {
+    font-size: 18px;
+}
+
+.nova-market-orbit {
+    position: absolute;
+    border: 1px solid rgba(103, 232, 249, .22);
+    border-radius: 50%;
+}
+
+.nova-market-orbit-one {
+    width: 430px;
+    height: 430px;
+}
+
+.nova-market-orbit-two {
+    width: 520px;
+    height: 520px;
+    border-style: dashed;
+}
+
+.nova-market-categories {
+    padding: 56px max(24px, 7vw) 64px;
+    background: #f6f9fc;
+}
+
+.nova-market-section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.nova-market-section-heading p {
+    margin: 0 0 4px;
+    color: #0284c7;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.nova-market-section-heading h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: clamp(30px, 4vw, 46px);
+    line-height: 1;
+    letter-spacing: -.04em;
+}
+
+.nova-market-section-heading a {
+    color: #0369a1;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.nova-market-category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+
+.nova-market-category {
+    min-height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border: 1px solid #dbe7ef;
+    border-radius: 18px;
+    padding: 24px;
+    color: #0f172a;
+    background: #fff;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+.nova-market-category:hover {
+    transform: translateY(-5px);
+    border-color: #67e8f9;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, .10);
+}
+
+.nova-market-category span {
+    margin-bottom: auto;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.nova-market-category strong {
+    font-size: 25px;
+}
+
+.nova-market-category small {
+    margin-top: 5px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.nova-market-category-fresh {
+    background: linear-gradient(145deg, #fff 55%, #dcfce7);
+}
+
+.nova-market-category-pantry {
+    background: linear-gradient(145deg, #fff 55%, #fef3c7);
+}
+
+.nova-market-category-drinks {
+    background: linear-gradient(145deg, #fff 55%, #dbeafe);
+}
+
+.nova-market-category-home {
+    background: linear-gradient(145deg, #fff 55%, #ede9fe);
+}
+
+.ethiopia-hero {
+    min-height: 610px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, .82fr);
+    align-items: stretch;
+    background: #f7f2e8;
+}
+
+.ethiopia-hero-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 76px max(24px, 7vw);
+}
+
+.ethiopia-eyebrow {
+    margin: 0 0 18px;
+    padding: 8px 12px;
+    border: 1px solid #16833f;
+    border-radius: 999px;
+    color: #16833f;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.ethiopia-hero h1 {
+    max-width: 760px;
+    margin: 0;
+    color: #183229;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(48px, 5.8vw, 82px);
+    line-height: .98;
+    letter-spacing: 0;
+}
+
+.ethiopia-hero h1 span {
+    color: #b72b2b;
+}
+
+.ethiopia-description {
+    max-width: 620px;
+    margin: 26px 0 30px;
+    color: #55665e;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+.ethiopia-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.ethiopia-primary,
+.ethiopia-secondary {
+    min-height: 52px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 0 22px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.ethiopia-primary {
+    background: #16833f;
+    color: #fff;
+}
+
+.ethiopia-secondary {
+    border: 1px solid #183229;
+    color: #183229;
+}
+
+.ethiopia-delivery {
+    display: grid;
+    grid-template-columns: 10px auto;
+    column-gap: 10px;
+    margin-top: 32px;
+    color: #183229;
+}
+
+.ethiopia-delivery-dot {
+    width: 8px;
+    height: 8px;
+    grid-row: 1 / 3;
+    align-self: start;
+    margin-top: 5px;
+    border-radius: 50%;
+    background: #e9b949;
+}
+
+.ethiopia-delivery strong {
+    font-size: 13px;
+}
+
+.ethiopia-delivery small {
+    margin-top: 2px;
+    color: #718078;
+}
+
+.ethiopia-hero-image {
+    position: relative;
+    min-height: 610px;
+    overflow: hidden;
+    background: #d8d1bd;
+}
+
+.ethiopia-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ethiopia-coffee-note {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    min-width: 210px;
+    display: flex;
+    flex-direction: column;
+    border-left: 5px solid #e9b949;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, .94);
+    color: #183229;
+}
+
+.ethiopia-coffee-note span {
+    color: #16833f;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.ethiopia-coffee-note strong {
+    margin-top: 3px;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 20px;
+}
+
+.ethiopia-categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid #e1d9c7;
+    border-bottom: 1px solid #e1d9c7;
+    background: #fff;
+}
+
+.ethiopia-categories a {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    border-right: 1px solid #e1d9c7;
+    padding: 26px max(18px, 2vw);
+    color: #183229;
+}
+
+.ethiopia-categories a:last-child {
+    border-right: 0;
+}
+
+.ethiopia-categories span {
+    margin-bottom: auto;
+    color: #b72b2b;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.ethiopia-categories strong {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 21px;
+}
+
+.ethiopia-categories small {
+    margin-top: 5px;
+    color: #718078;
+}
+
+@media (max-width: 868px) {
+    .ethiopia-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .ethiopia-hero-copy {
+        min-height: 470px;
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+
+    .ethiopia-hero-image {
+        min-height: 360px;
+    }
+
+    .ethiopia-categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ethiopia-categories a:nth-child(2) {
+        border-right: 0;
+    }
+
+    .ethiopia-categories a:nth-child(-n + 2) {
+        border-bottom: 1px solid #e1d9c7;
+    }
+
+    .nova-market-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 56px;
+        padding-bottom: 42px;
+    }
+
+    .nova-market-visual {
+        min-height: 300px;
+    }
+
+    .nova-market-orbit-one {
+        width: 330px;
+        height: 330px;
+    }
+
+    .nova-market-orbit-two {
+        width: 390px;
+        height: 390px;
+    }
+
+    .nova-market-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 525px) {
+    .ethiopia-hero h1 {
+        font-size: 46px;
+    }
+
+    .ethiopia-description {
+        font-size: 15px;
+    }
+
+    .ethiopia-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .ethiopia-primary,
+    .ethiopia-secondary {
+        width: 100%;
+    }
+
+    .ethiopia-categories {
+        grid-template-columns: 1fr;
+    }
+
+    .ethiopia-categories a {
+        min-height: 125px;
+        border-right: 0;
+        border-bottom: 1px solid #e1d9c7;
+    }
+
+    .ethiopia-categories a:last-child {
+        border-bottom: 0;
+    }
+
+    .ethiopia-coffee-note {
+        right: 14px;
+        bottom: 14px;
+        min-width: 180px;
+    }
+
+    .nova-market-hero h1 {
+        font-size: 46px;
+    }
+
+    .nova-market-description {
+        font-size: 15px;
+    }
+
+    .nova-market-actions {
+        flex-direction: column;
+    }
+
+    .nova-market-primary,
+    .nova-market-secondary {
+        width: 100%;
+    }
+
+    .nova-market-section-heading {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .nova-market-category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nova-market-category {
+        min-height: 150px;
     }
 }

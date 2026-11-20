@@ -15,8 +15,8 @@
                 />
             @else
                 <img
-                    class="w-max" 
-                    src="{{ bagisto_asset('images/logo.svg') }}"
+                    class="h-auto w-36"
+                    src="{{ asset('images/ab-shop-logo.svg') }}"
                     alt="{{ config('app.name') }}"
                 />
             @endif
@@ -97,13 +97,6 @@
                 </x-admin::form>
             </div>
 
-            <!-- Powered By -->
-            <div class="text-sm font-normal">
-                @lang('admin::app.users.sessions.powered-by-description', [
-                    'bagisto' => '<a class="text-blue-600 hover:underline" href="https://bagisto.com/en/">Bagisto</a>',
-                    'webkul' => '<a class="text-blue-600 hover:underline" href="https://webkul.com/">Webkul</a>',
-                ])
-            </div>
         </div>
     </div>
 

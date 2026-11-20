@@ -6,6 +6,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Webkul\Category\Repositories\CategoryRepository;
+use Webkul\CMS\Repositories\PageRepository;
 use Webkul\Core\Http\Middleware\SecureHeaders;
 use Webkul\Shop\Http\Requests\ContactRequest;
 use Webkul\Shop\Http\Resources\CategoryTreeResource;
@@ -27,7 +28,8 @@ class HomeController extends Controller
      */
     public function __construct(
         protected SectionRepository $sectionRepository,
-        protected CategoryRepository $categoryRepository
+        protected CategoryRepository $categoryRepository,
+        protected PageRepository $pageRepository
     ) {}
 
     /**
@@ -109,7 +111,14 @@ class HomeController extends Controller
      */
     public function contactUs()
     {
-        return view('shop::home.contact-us');
+        $contactPage = $this->pageRepository
+            ->whereHas('channels', function ($query) {
+                $query->where('id', core()->getCurrentChannel()->id);
+            })
+            ->whereTranslation('url_key', 'contact-us')
+            ->first();
+
+        return view('shop::home.contact-us', compact('contactPage'));
     }
 
     /**

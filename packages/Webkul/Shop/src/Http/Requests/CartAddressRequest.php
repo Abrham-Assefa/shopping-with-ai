@@ -7,7 +7,6 @@ use Webkul\Checkout\Facades\Cart;
 use Webkul\Core\Rules\PhoneNumber;
 use Webkul\Core\Rules\PostCode;
 use Webkul\Core\Rules\StateBelongsToCountry;
-use Webkul\Customer\Rules\VatIdRule;
 
 class CartAddressRequest extends FormRequest
 {
@@ -24,6 +23,29 @@ class CartAddressRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
+    }
+
+    /**
+     * Apply hidden Ethiopian checkout defaults before validation and saving.
+     */
+    protected function prepareForValidation(): void
+    {
+        foreach (['billing', 'shipping'] as $addressType) {
+            if (! $this->has($addressType)) {
+                continue;
+            }
+
+            $address = $this->input($addressType, []);
+
+            $this->merge([
+                $addressType => array_merge($address, [
+                    'company_name' => 'Individual',
+                    'vat_id' => 'number',
+                    'postcode' => '1000',
+                    'state' => 'Addis Ababa',
+                ]),
+            ]);
+        }
     }
 
     /**
@@ -68,7 +90,7 @@ class CartAddressRequest extends FormRequest
 
         if ($addressType == 'billing') {
             $this->mergeWithRules([
-                "{$addressType}.vat_id" => [(new VatIdRule)->setCountry($this->input('billing.country'))],
+                "{$addressType}.vat_id" => ['nullable'],
             ]);
         }
     }

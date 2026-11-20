@@ -25,8 +25,18 @@
      * Colours — the palette of named colours used in the admin.
      */
     --color-darkGreen: #40994A;
-    --color-darkBlue:  #0044F2;
+    --color-darkBlue:  #0057FF;
     --color-darkPink:  #F85156;
+    --color-velocityOrange: #FF7A00;
+    --color-blue-50:  #EFF6FF;
+    --color-blue-100: #DBEAFE;
+    --color-blue-500: #1769FF;
+    --color-blue-600: #0057FF;
+    --color-blue-700: #0046D5;
+    --color-violet-50:  #FFF7ED;
+    --color-violet-300: #FDBA74;
+    --color-violet-500: #F97316;
+    --color-violet-700: #C2410C;
 
     /**
      * Fonts — the named families the admin can ask for by utility.
@@ -250,7 +260,7 @@
     }
 
     .primary-button {
-        @apply bg-blue-600 border border-blue-700 cursor-pointer flex focus:opacity-[0.9] font-semibold gap-x-1 hover:opacity-[0.9] items-center place-content-center px-3 py-1.5 rounded-md text-gray-50 transition-all;
+        @apply bg-darkBlue border border-blue-700 cursor-pointer flex focus:opacity-[0.9] font-semibold gap-x-1 hover:bg-velocityOrange hover:border-velocityOrange items-center place-content-center px-3 py-1.5 rounded-md text-gray-50 transition-all;
     }
 
     .secondary-button {

@@ -67,7 +67,7 @@
                     <div class="m-auto grid h-[100vh] max-w-90.5 items-end">
                         <div class="grid gap-4">
                             <img
-                                src="{{ bagisto_asset('images/installer/bagisto-logo.svg', 'installer') }}"
+                                src="{{ asset('images/ab-shop-logo.svg') }}"
                                 alt="@lang('installer::app.installer.index.bagisto-logo')"
                             >
 
